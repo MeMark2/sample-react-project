@@ -1,6 +1,7 @@
 import React from 'react'
 import Login from './Login';
 import Selector from './Selector';
+import Nav from '../containers/Nav'
 import { Provider } from 'react-redux'
 import rootReducer from '../store/rootReducer'
 import { createStore } from 'redux'
@@ -20,7 +21,11 @@ export default React.createClass({
 
     return (
         <Provider store={store}>
-          {layout}
+          <div>
+            <Nav/>
+            {this.props.children}
+            {layout}
+          </div>
         </Provider>
       )
   }
