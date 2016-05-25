@@ -4,6 +4,9 @@
 
 // Layout styles
 .login
+  @at-root #{&}__mainContainer
+    text-align: center
+
   @at-root #{&}__button
     background-color: #00479f
     color: white
@@ -18,3 +21,7 @@
 
     &:focus
       outline: none
+
+  @at-root #{&}__helpText
+    color: #00479f
+    font-size: 13px

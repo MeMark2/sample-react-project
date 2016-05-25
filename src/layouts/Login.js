@@ -1,5 +1,6 @@
 import React from 'react'
 import TextInput from '../components/TextInput'
+import { Link } from 'react-router'
 
 export default React.createClass({
   getInitialState() {
@@ -44,18 +45,21 @@ export default React.createClass({
     }
 
     return (
-    	<div className='login'>
-				<div className='container-fluid'>
-					<div className='row'>
-						<div className='col-lg-offset-4 col-lg-4 col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 test'>
+      <div className='login'>
+        <div className='container-fluid'>
+          <div className='row'>
+            <div className='login__mainContainer col-lg-offset-4 col-lg-4 col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8'>
               <TextInput iconSrc={emailIcon} placeholder='EMAIL' onLoseFocus={this.emailTextLoseFocus}
                 onTextChange={this.emailTextChange}/>
               <TextInput iconSrc={passwordIcon} placeholder='PASSWORD' password={true}/>
               <button className='login__button'>{buttonText}</button>
-			      </div>
-					</div>
-				</div>
-    	</div>
+              <div>
+                <Link className='login__helpText' to="/about">Need help?</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       )
   }
 })
