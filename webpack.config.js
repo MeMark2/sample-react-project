@@ -2,8 +2,13 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
+  plugins: process.env.NODE_ENV === 'production' ? [
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.optimize.UglifyJsPlugin()
+  ] : [],
   entry: './index.js',
-  output: { path: __dirname, filename: './bin/bundle.js' },
+  output: { path: __dirname, filename: './public/bundle.js' },
   module: {
     loaders: [
       {
@@ -20,5 +25,5 @@ module.exports = {
         exclude: /node_modules/
       }
     ]
-  },
+  }
 };

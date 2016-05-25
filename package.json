@@ -8,7 +8,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --inline --content-base"
+    "build": "webpack index.js ./bin/bundle.js -p",
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:dev": "webpack-dev-server --inline --content-base public --history-api-fallback",
+    "start:prod": "webpack && node server.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +30,9 @@
   },
   "homepage": "https://github.com/MeMark2/sample-react-project#readme",
   "dependencies": {
+    "compression": "^1.6.2",
+    "express": "^4.13.4",
+    "if-env": "^1.0.0",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
     "react-redux": "^4.4.5",
@@ -34,6 +40,7 @@
     "redux": "^3.5.2"
   },
   "devDependencies": {
+    "babel-cli": "^6.9.0",
     "babel-core": "^6.9.0",
     "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.9.0",
